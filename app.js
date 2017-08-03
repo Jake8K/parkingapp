@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 2454);
+app.set('port', 5853);
 app.set('hostname', 'localhost');
 app.use(express.static('public'));
 
