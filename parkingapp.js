@@ -40,12 +40,13 @@ app.post('/user',function(request,response,next){
     request.body.city, request.body.state, request.body.zipcode], 
      function(err, result){
     if(err){
-      response.send(err);
+      response.send(err.sqlMessage);
+      return;
     }
     else {
       mysql.pool.query('SELECT * FROM User WHERE user_id=?', [result.insertId], function(err, rows, fields){
         if(err){
-          next(err.sqlMessage);
+          response.send(err.sqlMessage);
           return;
         }
         else {
@@ -60,13 +61,14 @@ app.delete('/user',function(request,response,next){
   var context = {};
   mysql.pool.query('DELETE FROM User WHERE user_username=?', [request.body.username], function(err, rows, fields){
     if(err){
-      next(err);
+      response.send(err.sqlMessage);
       return;
     }
     else {
       mysql.pool.query('SELECT * FROM User', function(err, rows, fields){
         if(err){
           response.send(err.sqlMessage);
+          return;
         }
         else {
          context.exercises = rows;
