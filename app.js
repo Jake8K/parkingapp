@@ -60,7 +60,7 @@ app.post('/user',function(request,response,next){
 
 app.delete('/user',function(request,response,next){
   var context = {};
-  mysql.pool.query('DELETE * FROM User WHERE user_username=?', [request.body.username], function(err, rows, fields){
+  mysql.pool.query('DELETE FROM User WHERE user_username=?', [request.body.username], function(err, rows, fields){
     if(err){
       next(err);
       return;
