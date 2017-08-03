@@ -35,7 +35,7 @@ app.post('/user',function(request,response,next){
       return;
     }
     else {
-      mysql.pool.query('SELECT * FROM User WHERE id=?', [result.insertId], function(err, rows, fields){
+      mysql.pool.query('SELECT * FROM User WHERE user_id=?', [result.insertId], function(err, rows, fields){
         if(err){
           next(err);
           return;
