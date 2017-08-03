@@ -77,24 +77,6 @@ app.delete('/user',function(request,response,next){
   });
 });
 
-/*
-app.get('/delete_band',function(request,response,next){
-  var context = {};
-  
-  mysql.pool.query("DELETE FROM Band WHERE band_id=?;", 
-    [request.query.band_id], 
-     function(err, result){
-    if(err){
-      next(err);
-      return;
-    }
-    else {
-      response.redirect('/bands');
-    }
-  });
-});
-*/
-
 app.use(function(request,response){
   response.status(404);
   response.render('404');
