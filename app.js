@@ -17,6 +17,20 @@ app.get('/',function(request,response,next){
   response.render('home', context);
 });
 
+app.get('/user',function(request,response,next){
+  var context = {};
+  mysql.pool.query('SELECT * FROM User', function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    else {
+      context.exercises = rows;
+      response.send(JSON.stringify(rows));
+    }
+  });
+});
+
 app.post('/user',function(request,response,next){
   var context = {};
   
