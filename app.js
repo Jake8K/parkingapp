@@ -20,7 +20,9 @@ app.get('/',function(request,response,next){
 app.post('/user',function(request,response,next){
   var context = {};
 
-  console.log("1");
+  console.log(request.body.username);
+  console.log(request.body.fname);
+  console.log(request.body.lname);
   
   mysql.pool.query("INSERT INTO User (user_username, user_fname, user_lname, \
     user_phone, user_email, user_address, user_city, user_state, user_zipcode) \
