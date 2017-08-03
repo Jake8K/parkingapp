@@ -11,19 +11,19 @@
 
 
 <script>
-	var lat	= -22.363;
-	var lng = 131.044;
+	var lattitude = -22.363;
+	var longitude = 131.044;
     function initMap() {
-		var uluru = {};
-		uluru.lat = lat;
-		uluru.lng = lng;
+		var coordinates = {};
+		coordinates.lat = lattitude;
+		coordinates.lng = longitude;
 		
 		var map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 4,
-			center: uluru
+			zoom: 8,
+			center: coordinates
 		});
 		var marker = new google.maps.Marker({
-			position: uluru,
+			position: coordinates,
 			map: map
 		});
 	}
