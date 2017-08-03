@@ -21,8 +21,7 @@ app.get('/user',function(request,response,next){
   var context = {};
   mysql.pool.query('SELECT * FROM User', function(err, rows, fields){
     if(err){
-      next(err);
-      return;
+      response.send(err);
     }
     else {
       context.exercises = rows;
@@ -41,8 +40,7 @@ app.post('/user',function(request,response,next){
     request.body.city, request.body.state, request.body.zipcode], 
      function(err, result){
     if(err){
-      next(err);
-      return;
+      response.send(err);
     }
     else {
       mysql.pool.query('SELECT * FROM User WHERE user_id=?', [result.insertId], function(err, rows, fields){
@@ -68,8 +66,7 @@ app.delete('/user',function(request,response,next){
     else {
       mysql.pool.query('SELECT * FROM User', function(err, rows, fields){
         if(err){
-          next(err);
-          return;
+          response.send(err);
         }
         else {
          context.exercises = rows;
