@@ -58,6 +58,28 @@ app.post('/user',function(request,response,next){
   });
 });
 
+app.delete('/user',function(request,response,next){
+  var context = {};
+  mysql.pool.query('DELETE * FROM User WHERE user_username=?', [request.body.username], function(err, rows, fields){
+    if(err){
+      next(err);
+      return;
+    }
+    else {
+      mysql.pool.query('SELECT * FROM User', function(err, rows, fields){
+        if(err){
+          next(err);
+          return;
+        }
+        else {
+         context.exercises = rows;
+         response.send(JSON.stringify(rows));
+        }
+      });
+    }
+  });
+});
+
 /*
 app.get('/delete_band',function(request,response,next){
   var context = {};
