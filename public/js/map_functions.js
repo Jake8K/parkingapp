@@ -81,7 +81,7 @@ function initMap() {
           location.availability = response[i].location_availability;
 
           google.maps.event.addListener(marker, 'click', function(location) {
-            document.getElementById("availability_window").textContent = location.availability + " Spaces Left";
+            document.getElementById("availability_window").textContent = "12 Spaces Left";
             availability_window.open(map, this); 
           }); 
         }
