@@ -40,6 +40,10 @@ function initMap() {
     infowindow.open(map, marker);
   });
 
+
+  //
+  // Request all locations in database and create markers on map
+  //
   var request = new XMLHttpRequest();
   request.open('GET', '/location', true);
   request.setRequestHeader('Content-Type', 'application/json'); 
@@ -47,11 +51,17 @@ function initMap() {
       if(request.status >= 200 && request.status < 400){
           var response = JSON.parse(request.responseText);
 
+          //Make Markers
           for (var i = 0; i < response.length; i++) {
             var latLng = new google.maps.LatLng(response[i].location_lat,response[i].location_lon);
             var marker = new google.maps.Marker({
               position: latLng,
               map: map
+            });
+
+            marker.addListener('click', function() {
+              map.setCenter(marker.getPosition());
+              infowindow.open(map, marker);
             });
           }
       }
