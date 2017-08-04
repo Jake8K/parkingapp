@@ -76,6 +76,7 @@ function initMap() {
           location.availability = response[i].location_availability;
 
           google.maps.event.addListener(location.marker, 'click', function() { 
+            console.log(location.availability);
             document.getElementById("availability_window").textContent = this.availability + " Spaces Left";
             availability_window.open(map, this); 
           }); 
