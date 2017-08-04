@@ -66,11 +66,12 @@ function initMap() {
           var latLng = new google.maps.LatLng(response[i].location_lat,response[i].location_lon);
           
           var location = {};
-
           location.marker = new google.maps.Marker({
             position: latLng,
             map: map
           });
+
+          console.log(response[i].availability);
 
           location.availability = response[i].availability;
 
