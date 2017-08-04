@@ -21,6 +21,8 @@
 	</table>
 </div>
 
+<div id="message">Location saved</div>
+
 
 
 <script>
@@ -35,15 +37,38 @@
 		var coordinates = {};
 		coordinates.lat = lattitude;
 		coordinates.lng = longitude;
+
+		infowindow = new google.maps.InfoWindow({
+          content: document.getElementById('form')
+        });
+
+        messagewindow = new google.maps.InfoWindow({
+          content: document.getElementById('message')
+        });
 		
 		map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 14,
 			center: coordinates
 		});
 		
+		infowindow = new google.maps.InfoWindow({
+  			content: document.getElementById('form')
+		});
 
+		messagewindow = new google.maps.InfoWindow({
+  			content: document.getElementById('message')
+		});
 
+		google.maps.event.addListener(map, "click", function(event) {
+    		marker = new google.maps.Marker({
+      			position: event.latLng,
+      			map: map
+    		});
+		});
 
+		google.maps.event.addListener(marker, "click", function() {
+  			infowindow.open(map, marker);
+		});
 	}
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC--AF8pq1I9ebA-t-VOmW7eNWVqXqckw8&callback=initMap"></script>
