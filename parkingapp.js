@@ -40,7 +40,7 @@ app.post('/user',function(request,response,next){
     request.body.city, request.body.state, request.body.zipcode], 
      function(err, result){
     if(err){
-      response.status(404);
+      response.status(409);
       response.send(err.sqlMessage);
       return;
     }
