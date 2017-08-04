@@ -64,6 +64,8 @@ function initMap() {
         //Make Markers
         for (var i = 0; i < response.length; i++) {
           var latLng = new google.maps.LatLng(response[i].location_lat,response[i].location_lon);
+          
+          var location = new Location;
           var marker = new google.maps.Marker({
             position: latLng,
             map: map
@@ -82,8 +84,6 @@ function initMap() {
       }
   }); 
   request.send();
-
-  
 }
 
 function useGPS() {
