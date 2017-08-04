@@ -40,9 +40,6 @@ function initMap() {
     infowindow.open(map, marker);
   });
 
-  google.maps.event.addListener(marker, 'click', function(event) {
-    infowindow.open(map, marker);
-  });
 
 
   //
