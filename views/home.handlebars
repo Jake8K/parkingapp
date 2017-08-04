@@ -75,7 +75,7 @@
         });
       }
 
-      function useGPS {
+      function useGPS() {
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -83,7 +83,7 @@
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-            
+
             locationwindow.setPosition(pos);
             locationwindow.setContent('Location found.');
             locationwindow.open(map);
