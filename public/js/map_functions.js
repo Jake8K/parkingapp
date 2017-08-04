@@ -4,6 +4,7 @@ var map;
 var marker;
 var infowindow;
 var locationwindow;
+var availabilitywindow;
 var messagewindow;
 var errorwindow;
 
@@ -123,7 +124,7 @@ function submitData() {
           var response = JSON.parse(request.responseText);
           console.log(response);
           infowindow.close();
-          messagewindow.open(map, marker);
+          availabilitywindow.open(map, marker);
       }
       else {
           console.log("Error in network request: " + request.statusText);
