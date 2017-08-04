@@ -69,7 +69,7 @@ function initMap() {
 
   google.maps.event.addListener(marker, 'click', function () {
    // do something with this marker ...
-   this.setTitle('I am clicked');
+
   });
 }
 
