@@ -37,14 +37,6 @@
 		var coordinates = {};
 		coordinates.lat = lattitude;
 		coordinates.lng = longitude;
-
-		infowindow = new google.maps.InfoWindow({
-          content: document.getElementById('form')
-        });
-
-        messagewindow = new google.maps.InfoWindow({
-          content: document.getElementById('message')
-        });
 		
 		map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 14,
