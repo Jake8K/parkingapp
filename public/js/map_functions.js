@@ -46,7 +46,7 @@ function initMap() {
       availability_window.open(map, this); 
     });
 
-    infowindow.open(map, this);
+    infowindow.open(map, marker);
   });
 
 
