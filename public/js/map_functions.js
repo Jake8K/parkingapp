@@ -42,10 +42,6 @@ function initMap() {
       map: map
     });
 
-    google.maps.event.addListener(marker, 'click', function() { 
-      availability_window.open(map, this); 
-    });
-
     infowindow.open(map, marker);
   });
 
