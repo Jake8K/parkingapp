@@ -50,6 +50,11 @@ function initMap() {
     infowindow.open(map, marker);
   });
 
+  google.maps.event.addListener(infoWindow,'closeclick',function(){
+   currentMark.setMap(null); //removes the marker
+   // then, remove the infowindows name from the array
+  });
+
 
   //
   // Request all locations in database and create markers on map
