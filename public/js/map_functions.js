@@ -54,14 +54,13 @@ function initMap() {
           //Make Markers
           for (var i = 0; i < response.length; i++) {
             var latLng = new google.maps.LatLng(response[i].location_lat,response[i].location_lon);
-            var marker = new google.maps.Marker({
+            var new_marker = new google.maps.Marker({
               position: latLng,
               map: map
             });
 
-            marker.addListener('click', function() {
-              map.setCenter(marker.getPosition());
-              infowindow.open(map, marker);
+            new_marker.addListener('click', function() {
+              infowindow.open(map, new_marker);
             });
           }
       }
