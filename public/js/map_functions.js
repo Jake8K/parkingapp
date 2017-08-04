@@ -40,6 +40,10 @@ function initMap() {
     infowindow.open(map, marker);
   });
 
+  google.maps.event.addListener(marker, 'click', function(event) {
+    infowindow.open(map, marker);
+  });
+
 
   //
   // Request all locations in database and create markers on map
@@ -57,10 +61,6 @@ function initMap() {
             var marker = new google.maps.Marker({
               position: latLng,
               map: map
-            });
-
-            this.addListener('click', function() {
-              infowindow.open(map, this);
             });
           }
       }
