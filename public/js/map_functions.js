@@ -65,7 +65,7 @@ function initMap() {
           });
 
           google.maps.event.addListener(marker, 'click', function() { 
-            messagewindow.open(map, this); 
+            availabilitywindow.open(map, this); 
           }); 
         }
       }
@@ -124,7 +124,7 @@ function submitData() {
           var response = JSON.parse(request.responseText);
           console.log(response);
           infowindow.close();
-          availabilitywindow.open(map, marker);
+          messagewindow.open(map, marker);
       }
       else {
           console.log("Error in network request: " + request.statusText);
