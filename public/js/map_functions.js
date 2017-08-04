@@ -72,13 +72,12 @@ function initMap() {
             map: map
           });
 
-        
+          location.availability = response[i].availability;
+
           google.maps.event.addListener(location.marker, 'click', function() { 
-            document.getElementById("availability_window").textContent = "12 Spaces Left";
+            document.getElementById("availability_window").textContent = this.availability + " Spaces Left";
             availability_window.open(map, this); 
           }); 
-          
-          
         }
       }
       else {
