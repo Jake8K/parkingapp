@@ -2,6 +2,7 @@ var lattitude = 37.774929;
 var longitude = -122.419416;
 var map;
 var marker;
+var markers = [];
 var infowindow;
 var location_window;
 var availability_window;
@@ -42,6 +43,7 @@ function initMap() {
       position: event.latLng,
       map: map
     });
+    markers.push(marker);
 
     google.maps.event.addListener(marker, 'click', function() { 
       availability_window.open(map, this); 
@@ -50,7 +52,7 @@ function initMap() {
     infowindow.open(map, marker);
 
     google.maps.event.addListener(infowindow,'closeclick',function(){
-      currentMark.setMap(null); //removes the marker
+      marker.setMap(null); //removes the marker
       // then, remove the infowindows name from the array
     });
   });
@@ -76,6 +78,7 @@ function initMap() {
             map: map
           });
 
+          markers.push(marker);
           location.availability = response[i].location_availability;
 
           google.maps.event.addListener(location.marker, 'click', function(location) {
