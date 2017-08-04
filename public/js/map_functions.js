@@ -41,7 +41,6 @@ function initMap() {
   });
 
 
-
   //
   // Request all locations in database and create markers on map
   //
@@ -67,6 +66,11 @@ function initMap() {
       }
   }); 
   request.send();
+
+  google.maps.event.addListener(marker, 'click', function () {
+   // do something with this marker ...
+   this.setTitle('I am clicked');
+  });
 }
 
 function useGPS() {
