@@ -21,6 +21,7 @@ app.get('/user',function(request,response,next){
   var context = {};
   mysql.pool.query('SELECT * FROM User', function(err, rows, fields){
     if(err){
+      response.status(409);
       response.send(err.sqlMessage);
     }
     else {
@@ -47,6 +48,7 @@ app.post('/user',function(request,response,next){
     else {
       mysql.pool.query('SELECT * FROM User WHERE user_id=?', [result.insertId], function(err, rows, fields){
         if(err){
+          response.status(409);
           response.send(err.sqlMessage);
           return;
         }
@@ -68,6 +70,72 @@ app.delete('/user',function(request,response,next){
     else {
       mysql.pool.query('SELECT * FROM User', function(err, rows, fields){
         if(err){
+          response.status(409);
+          response.send(err.sqlMessage);
+          return;
+        }
+        else {
+         context.exercises = rows;
+         response.send(JSON.stringify(rows));
+        }
+      });
+    }
+  });
+});
+
+app.get('/location',function(request,response,next){
+  var context = {};
+  mysql.pool.query('SELECT * FROM Location', function(err, rows, fields){
+    if(err){
+      response.status(409);
+      response.send(err.sqlMessage);
+      return;
+    }
+    else {
+      context.exercises = rows;
+      response.send(JSON.stringify(rows));
+    }
+  });
+});
+
+app.post('/location',function(request,response,next){
+  var context = {};
+  
+  mysql.pool.query("INSERT INTO Location (location_lat, location_lon, location_availability, \
+    location_last_availability_update) VALUES (?, ?, ?, NOW());", [request.body.lat, request.body.lng, 
+    request.body.availability], 
+     function(err, result){
+    if(err){
+      response.status(409);
+      response.send(err.sqlMessage);
+      return;
+    }
+    else {
+      mysql.pool.query('SELECT * FROM Location WHERE user_id=?', [result.insertId], function(err, rows, fields){
+        if(err){
+          response.status(409);
+          response.send(err.sqlMessage);
+          return;
+        }
+        else {
+          response.send(JSON.stringify(rows[rows.length - 1]));
+        }
+      });
+    }
+  });
+});
+
+app.delete('/location',function(request,response,next){
+  var context = {};
+  mysql.pool.query('DELETE FROM Location WHERE location_id=?', [request.body.location_id], function(err, rows, fields){
+    if(err){
+      response.send(err.sqlMessage);
+      return;
+    }
+    else {
+      mysql.pool.query('SELECT * FROM Location', function(err, rows, fields){
+        if(err){
+          response.status(409);
           response.send(err.sqlMessage);
           return;
         }
