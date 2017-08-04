@@ -67,11 +67,10 @@ function initMap() {
           var marker = new google.maps.Marker({
             position: latLng,
             map: map
-            availability: response[i].availability
           });
 
           google.maps.event.addListener(marker, 'click', function() { 
-            console.log(this.availability);
+            document.getElementById("availability_window").textContent = "12 Spaces Left";
             availability_window.open(map, this); 
           }); 
         }
