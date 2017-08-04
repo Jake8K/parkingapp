@@ -4,7 +4,7 @@
   <title>The Parking App</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <style>
   	#map {
     	height: 400px;
@@ -13,7 +13,7 @@
   	.hide {
   		overflow: hidden;
   	}
-</style>
+  </style>
 </head>
 <body>
   <div class="container">
@@ -24,10 +24,10 @@
 		<div id="form">
 	      	<table>
 	      	<tr><td>Availability:</td> <td><input type='text' id='availability'/> </td> </tr>
-	      	<tr><td></td><td><input type='button' value='Submit' onclick='saveData()'/></td></tr>
+	      	<tr><td></td><td><input type='button' value='Submit' onclick='submitData()'/></td></tr>
 	      	</table>
 		</div>
-		<div id="message">Location saved</div>
+		<div id="message">Thanks!</div>
 	</div>
     <script>
       var lattitude = 37.774929;
@@ -67,13 +67,23 @@
         });
       }
 
-      function saveData() {
+      function submitData() {
         var availability = escape(document.getElementById('availability').value);
         var latlng = marker.getPosition();
         var lat = latlng.lat()
         var lng = latlng.lng()
 
-        console.log(lat + ", " + lng);
+        
+		$.post("https://parkingapp.lucasmurphey.com/user",
+		{
+    		username: "lucasmurphey",
+    		fname: "Lucas"
+    		lname: "Murphey"
+		},
+		function(data, status){
+    		alert("Data: " + data + "\nStatus: " + status);
+		});
+
 
         infowindow.close();
         messagewindow.open(map, marker);
