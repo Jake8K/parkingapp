@@ -39,6 +39,34 @@ function initMap() {
 
     infowindow.open(map, marker);
   });
+
+  var request = new XMLHttpRequest();
+  request.open('GET', '/location', true);
+  request.setRequestHeader('Content-Type', 'application/json'); 
+  request.addEventListener('load',function(){
+      if(request.status >= 200 && request.status < 400){
+          var response = JSON.parse(request.responseText);
+
+          console.log(response);
+
+          /*
+          for (var i = 0; i < response.length; i++) {
+            var coords = response[i].geometry.coordinates;
+            var latLng = new google.maps.LatLng(coords[1],coords[0]);
+            var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+            });
+          }
+          */
+          
+      }
+      else {
+          console.log("Error in network request: " + request.statusText);
+
+      }
+  }); 
+  request.send();
 }
 
 function useGPS() {
