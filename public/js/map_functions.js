@@ -7,6 +7,7 @@ var location_window;
 var availability_window;
 var message_window;
 var error_window;
+var availability;
 
 function initMap() {
   var coordinates = {};
@@ -69,13 +70,13 @@ function initMap() {
           });
 
           google.maps.event.addListener(marker, 'click', function() { 
+            availability = response[i].availability;
             availability_window.open(map, this); 
           }); 
         }
       }
       else {
-          console.log("Error in network request: " + request.statusText);
-
+        console.log("Error in network request: " + request.statusText);
       }
   }); 
   request.send();
@@ -114,7 +115,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 function submitData() {
-  var availability = escape(document.getElementById('availability').value);
+  availability = escape(document.getElementById('availability').value);
   var latlng = marker.getPosition();
   var lat = latlng.lat()
   var lng = latlng.lng()
