@@ -67,11 +67,11 @@ function initMap() {
           var marker = new google.maps.Marker({
             position: latLng,
             map: map
+            availability: response[i].availability
           });
 
           google.maps.event.addListener(marker, 'click', function() { 
-            availability = response[i];
-            console.log(availability);
+            console.log(this.availability);
             availability_window.open(map, this); 
           }); 
         }
