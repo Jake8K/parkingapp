@@ -70,7 +70,7 @@ function initMap() {
             map: map
           });
 
-          google.maps.event.addListener(location.marker, 'click', function() { 
+          google.maps.event.addListener(marker, 'click', function() { 
             document.getElementById("availability_window").textContent = "12 Spaces Left";
             availability_window.open(map, this); 
           }); 
