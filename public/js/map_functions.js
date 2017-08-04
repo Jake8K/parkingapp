@@ -78,7 +78,7 @@ function initMap() {
             map: map
           });
 
-          markers.push(marker);
+          markers.push(location.marker);
           location.availability = response[i].location_availability;
 
           google.maps.event.addListener(location.marker, 'click', function(location) {
