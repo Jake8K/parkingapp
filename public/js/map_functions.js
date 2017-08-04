@@ -49,16 +49,20 @@ function initMap() {
   request.setRequestHeader('Content-Type', 'application/json'); 
   request.addEventListener('load',function(){
       if(request.status >= 200 && request.status < 400){
-          var response = JSON.parse(request.responseText);
+        var response = JSON.parse(request.responseText);
 
-          //Make Markers
-          for (var i = 0; i < response.length; i++) {
-            var latLng = new google.maps.LatLng(response[i].location_lat,response[i].location_lon);
-            var marker = new google.maps.Marker({
-              position: latLng,
-              map: map
-            });
-          }
+        //Make Markers
+        for (var i = 0; i < response.length; i++) {
+          var latLng = new google.maps.LatLng(response[i].location_lat,response[i].location_lon);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+
+          google.maps.event.addListener(marker, 'click', function() { 
+            alert("I am marker " + marker.title); 
+          }); 
+        }
       }
       else {
           console.log("Error in network request: " + request.statusText);
@@ -67,10 +71,7 @@ function initMap() {
   }); 
   request.send();
 
-  google.maps.event.addListener(marker, 'click', function () {
-   // do something with this marker ...
-
-  });
+  
 }
 
 function useGPS() {
