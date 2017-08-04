@@ -80,13 +80,13 @@
         var lng = latlng.lng()
 
 		    var request = new XMLHttpRequest();
-        var payload = {username:"lucasmurphey", fname: "lucas", lname: "murphey"};
+        var payload = {username:"lucasamurphey", fname: "lucas", lname: "murphey"};
         request.open('POST', '/user', true);
         request.setRequestHeader('Content-Type', 'application/json'); 
         request.addEventListener('load',function(){
 
             console.log(request.status);
-            
+
             if(request.status >= 200 && request.status < 400){
                 var response = JSON.parse(request.responseText);
                 console.log(response);
