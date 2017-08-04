@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>The Parking App</title>
-  <input type='button' value='Use My Location' onclick='useGPS()'/>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,8 +17,10 @@
 </head>
 <body>
   <div class="container">
-	<h3>The Parking App</h3>
+	  <h3>The Parking App</h3>
   	<div id="map" height="460px" width="100%"></div>
+    <!--<input type='button' value='Use My Location' onclick='useGPS()'/>-->
+    <button class="btn-primary" onclick='useGPS()'>Use My Location</button>
 	
   	<div class="hide">
 		<div id="form">
