@@ -33,7 +33,7 @@ function initMap() {
   });
 
   error_window = new google.maps.InfoWindow({
-    content: document.getElementById('errormessage')
+    content: document.getElementById('error_message')
   });
 
   google.maps.event.addListener(map, 'click', function(event) {
