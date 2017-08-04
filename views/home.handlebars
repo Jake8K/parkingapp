@@ -5,27 +5,25 @@
 	}
 </style>
 
-<h3>My Google Maps Demo</h3>
 <div id="map"></div>
 
-
-
 <script>
-	var lattitude = -22.363;
-	var longitude = 131.044;
+	var lattitude = 37.774929;
+	var longitude = -122.419416;
+	var map;
     function initMap() {
 		var coordinates = {};
 		coordinates.lat = lattitude;
 		coordinates.lng = longitude;
 		
-		var map = new google.maps.Map(document.getElementById('map'), {
+		map = new google.maps.Map(document.getElementById('map'), {
 			zoom: 8,
 			center: coordinates
 		});
-		var marker = new google.maps.Marker({
-			position: coordinates,
-			map: map
-		});
+		
+
+
+		
 	}
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC--AF8pq1I9ebA-t-VOmW7eNWVqXqckw8&callback=initMap"></script>
