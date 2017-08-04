@@ -60,7 +60,7 @@ function initMap() {
           });
 
           google.maps.event.addListener(marker, 'click', function() { 
-            alert("I am marker " + marker.title); 
+            infowindow.open(map, marker); 
           }); 
         }
       }
