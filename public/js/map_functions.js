@@ -3,10 +3,10 @@ var longitude = -122.419416;
 var map;
 var marker;
 var infowindow;
-var locationwindow;
-var availabilitywindow;
-var messagewindow;
-var errorwindow;
+var location_window;
+var availability_window;
+var message_window;
+var error_window;
 
 function initMap() {
   var coordinates = {};
@@ -18,21 +18,21 @@ function initMap() {
     zoom: 14
   });
 
-  availabilitywindow = new google.maps.InfoWindow({
-    content: document.getElementById('availability')
+  availability_window = new google.maps.InfoWindow({
+    content: document.getElementById('availability_window')
   });
 
   infowindow = new google.maps.InfoWindow({
     content: document.getElementById('form')
   });
 
-  locationwindow = new google.maps.InfoWindow;
+  location_window = new google.maps.InfoWindow;
 
-  messagewindow = new google.maps.InfoWindow({
+  message_window = new google.maps.InfoWindow({
     content: document.getElementById('message')
   });
 
-  errorwindow = new google.maps.InfoWindow({
+  error_window = new google.maps.InfoWindow({
     content: document.getElementById('errormessage')
   });
 
@@ -65,7 +65,7 @@ function initMap() {
           });
 
           google.maps.event.addListener(marker, 'click', function() { 
-            availabilitywindow.open(map, this); 
+            availability_window.open(map, this); 
           }); 
         }
       }
@@ -88,16 +88,16 @@ function useGPS() {
         lng: position.coords.longitude
       };
 
-      locationwindow.setPosition(pos);
-      locationwindow.setContent('Location found.');
-      locationwindow.open(map);
+      location_window.setPosition(pos);
+      location_window.setContent('Location found.');
+      location_window.open(map);
       map.setCenter(pos);
     }, function() {
-        handleLocationError(true, locationwindow, map.getCenter());
+        handleLocationError(true, location_window, map.getCenter());
     });
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, locationwindow, map.getCenter());
+    handleLocationError(false, location_window, map.getCenter());
   }
 }
 
@@ -124,12 +124,12 @@ function submitData() {
           var response = JSON.parse(request.responseText);
           console.log(response);
           infowindow.close();
-          messagewindow.open(map, marker);
+          message_window.open(map, marker);
       }
       else {
           console.log("Error in network request: " + request.statusText);
           infowindow.close();
-          errorwindow.open(map, marker);
+          error_window.open(map, marker);
       }
   }); 
   request.send(JSON.stringify(payload));
