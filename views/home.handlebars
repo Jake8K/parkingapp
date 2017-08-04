@@ -74,15 +74,7 @@
         var lng = latlng.lng()
 
         
-		$.post("https://parkingapp.lucasmurphey.com/user",
-		{
-    		username: "lucasmurphey",
-    		fname: "Lucas"
-    		lname: "Murphey"
-		},
-		function(data, status){
-    		alert("Data: " + data + "\nStatus: " + status);
-		});
+		post();
 
 
         infowindow.close();
