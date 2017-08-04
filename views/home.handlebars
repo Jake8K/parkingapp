@@ -75,7 +75,28 @@
         });
       }
 
-      
+      function useGPS {
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            
+            locationwindow.setPosition(pos);
+            locationwindow.setContent('Location found.');
+            locationwindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+              handleLocationError(true, locationwindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, locationwindow, map.getCenter());
+        }
+      }
+
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
