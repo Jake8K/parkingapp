@@ -1,16 +1,21 @@
-<!DOCTYPE html >
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>From Info Windows to a Database: Saving User-Added Form Data</title>
-    <style>
-  #map {
-    height: 400px;
-    width: 100%;
-  }
-</style>
-  </head>
-  <body>
+<!doctype html>
+<html>
+<head>
+  <title>The Parking App</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <style>
+  	#map {
+    	height: 400px;
+    	width: 100%;
+  	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3>The Parking App</h3>
+  		 
     <div id="map" height="460px" width="100%"></div>
     <div id="form">
       <table>
@@ -39,7 +44,7 @@
 
         map = new google.maps.Map(document.getElementById('map'), {
           center: coordinates,
-          zoom: 13
+          zoom: 14
         });
 
         infowindow = new google.maps.InfoWindow({
@@ -103,5 +108,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC--AF8pq1I9ebA-t-VOmW7eNWVqXqckw8&callback=initMap">
     </script>
-  </body>
+  	</div>
+  	<br><br><br><br><br><br>
+</body>
 </html>
