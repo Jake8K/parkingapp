@@ -66,6 +66,18 @@
           });
         });
       }
+      
+      function post(){
+      	$.post("https://parkingapp.lucasmurphey.com/user",
+		{
+    		username: "lucasmurphey",
+    		fname: "Lucas"
+    		lname: "Murphey"
+		},
+		function(data, status){
+    		alert("Data: " + data + "\nStatus: " + status);
+		});
+      }
 
       function submitData() {
         var availability = escape(document.getElementById('availability').value);
