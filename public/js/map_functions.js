@@ -70,7 +70,7 @@ function initMap() {
           });
 
           google.maps.event.addListener(marker, 'click', function() { 
-            availability = response[i].availability;
+            availability = response[i];
             console.log(availability);
             availability_window.open(map, this); 
           }); 
