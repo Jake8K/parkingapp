@@ -84,7 +84,7 @@ function initMap() {
             document.getElementById("availability_window").textContent = "12 Spaces Left";
             availability_window.open(map, this); 
 
-            google.maps.event.addListener(infowindow,'closeclick',function(){
+            google.maps.event.addListener(availability_window,'closeclick',function(){
               var div = document.getElementById("hide").createElement("availability_window");
               document.body.appendChild(div);
             });
