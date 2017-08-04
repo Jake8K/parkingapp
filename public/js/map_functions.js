@@ -46,14 +46,20 @@ function initMap() {
     markers.push(marker);
 
     google.maps.event.addListener(marker, 'click', function() { 
+      document.getElementById("availability_window").textContent = "12 Spaces Left";
       availability_window.open(map, this); 
+
+      google.maps.event.addListener(availability_window,'closeclick',function(){
+        var div = document.createElement("div");
+        document.getElementById("hide").appendChild(div);
+        div.id = "availability_window";
+      });
     });
 
     infowindow.open(map, marker);
 
     google.maps.event.addListener(infowindow,'closeclick',function(){
       marker.setMap(null); //removes the marker
-      // then, remove the infowindows name from the array
     });
   });
 
