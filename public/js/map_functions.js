@@ -42,7 +42,11 @@ function initMap() {
       map: map
     });
 
-    infowindow.open(map, marker);
+    google.maps.event.addListener(marker, 'click', function() { 
+      availability_window.open(map, this); 
+    });
+
+    infowindow.open(map, this);
   });
 
 
