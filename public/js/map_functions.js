@@ -59,8 +59,8 @@ function initMap() {
               map: map
             });
 
-            this.marker.addListener('click', function() {
-              infowindow.open(map, this.marker);
+            this.addListener('click', function() {
+              infowindow.open(map, this);
             });
           }
       }
