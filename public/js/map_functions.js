@@ -17,6 +17,10 @@ function initMap() {
     zoom: 14
   });
 
+  availabilitywindow = new google.maps.InfoWindow({
+    content: document.getElementById('availability')
+  });
+
   infowindow = new google.maps.InfoWindow({
     content: document.getElementById('form')
   });
@@ -60,7 +64,7 @@ function initMap() {
           });
 
           google.maps.event.addListener(marker, 'click', function() { 
-            infowindow.open(map, this); 
+            availabilitywindow.open(map, this); 
           }); 
         }
       }
