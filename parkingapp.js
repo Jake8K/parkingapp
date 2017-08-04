@@ -102,8 +102,8 @@ app.post('/location',function(request,response,next){
   var context = {};
   
   mysql.pool.query("INSERT INTO Location (location_lat, location_lon, location_availability, \
-    location_last_availability_update) VALUES (?, ?, ?, NOW());", [request.body.lat, request.body.lng, 
-    request.body.availability], 
+    location_last_availability_update) VALUES (?, ?, ?, NOW());", [request.body.location_lat, request.body.location_lng, 
+    request.body.location_availability], 
      function(err, result){
     if(err){
       response.status(409);
@@ -111,7 +111,7 @@ app.post('/location',function(request,response,next){
       return;
     }
     else {
-      mysql.pool.query('SELECT * FROM Location WHERE user_id=?', [result.insertId], function(err, rows, fields){
+      mysql.pool.query('SELECT * FROM Location WHERE location_id=?', [result.insertId], function(err, rows, fields){
         if(err){
           response.status(409);
           response.send(err.sqlMessage);

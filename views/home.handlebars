@@ -80,8 +80,8 @@
         var lng = latlng.lng()
 
 		    var request = new XMLHttpRequest();
-        var payload = {username:"lucasmurphey", fname: "lucas", lname: "murphey"};
-        request.open('POST', '/user', true);
+        var payload = {location_lat: lat, location_lon: lng, location_availability: availability};
+        request.open('POST', '/location', true);
         request.setRequestHeader('Content-Type', 'application/json'); 
         request.addEventListener('load',function(){
 
