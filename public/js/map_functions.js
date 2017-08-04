@@ -72,16 +72,15 @@ function initMap() {
         for (var i = 0; i < response.length; i++) {
           var latLng = new google.maps.LatLng(response[i].location_lat,response[i].location_lon);
           
-          var location = new Object();
-          location.marker = new google.maps.Marker({
+          marker = new google.maps.Marker({
             position: latLng,
             map: map
           });
 
-          markers.push(location.marker);
+          markers.push(marker);
           location.availability = response[i].location_availability;
 
-          google.maps.event.addListener(location.marker, 'click', function(location) {
+          google.maps.event.addListener(marker, 'click', function(location) {
             document.getElementById("availability_window").textContent = location.availability + " Spaces Left";
             availability_window.open(map, this); 
           }); 
