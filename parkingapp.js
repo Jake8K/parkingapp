@@ -102,7 +102,7 @@ app.post('/location',function(request,response,next){
   var context = {};
   
   mysql.pool.query("INSERT INTO Location (location_lat, location_lon, location_availability, \
-    location_last_availability_update) VALUES (?, ?, ?, NOW());", [request.body.location_lat, request.body.location_lng, 
+    location_last_availability_update) VALUES (?, ?, ?, NOW());", [request.body.location_lat, request.body.location_lon, 
     request.body.location_availability], 
      function(err, result){
     if(err){
