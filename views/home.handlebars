@@ -61,7 +61,7 @@
         });
 
         google.maps.event.addListener(map, 'click', function(event) {
-          console.log(event.latLng);
+          console.log(event);
           marker = new google.maps.Marker({
             position: event.latLng,
             map: map
