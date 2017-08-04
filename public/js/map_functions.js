@@ -148,7 +148,6 @@ function submitData() {
   request.addEventListener('load',function(){
       if(request.status >= 200 && request.status < 400){
           var response = JSON.parse(request.responseText);
-          console.log(response);
           infowindow.close();
           message_window.open(map, marker);
       }
