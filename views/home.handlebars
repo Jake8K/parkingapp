@@ -68,41 +68,16 @@
       }
 
       function saveData() {
-        var Availability = escape(document.getElementById('name').value);
-        var address = escape(document.getElementById('address').value);
-        var type = document.getElementById('type').value;
+        var availability = escape(document.getElementById('availability').value);
         var latlng = marker.getPosition();
-        var url = 'phpsqlinfo_addrow.php?name=' + name + '&address=' + address +
-                  '&type=' + type + '&lat=' + latlng.lat() + '&lng=' + latlng.lng();
+        var lat = latlng.lat()
+        var lng = latlng.lng()
 
-        downloadUrl(url, function(data, responseCode) {
+        console.log(lat + ", " + lng);
 
-          if (responseCode == 200 && data.length <= 1) {
-            infowindow.close();
-            messagewindow.open(map, marker);
-          }
-        });
+        infowindow.close();
+        messagewindow.open(map, marker);
       }
-
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request.responseText, request.status);
-          }
-        };
-
-        request.open('GET', url, true);
-        request.send(null);
-      }
-
-      function doNothing () {
-      }
-
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC--AF8pq1I9ebA-t-VOmW7eNWVqXqckw8&callback=initMap">
