@@ -71,13 +71,10 @@ function initMap() {
             map: map
           });
 
-          console.log(response[i].location_availability);
-
           location.availability = response[i].location_availability;
 
-          google.maps.event.addListener(location.marker, 'click', function() { 
-            console.log(location.availability);
-            document.getElementById("availability_window").textContent = this.availability + " Spaces Left";
+          google.maps.event.addListener(location.marker, 'click', function() {
+            document.getElementById("availability_window").textContent = location.availability + " Spaces Left";
             availability_window.open(map, this); 
           }); 
         }
