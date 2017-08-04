@@ -66,18 +66,6 @@
           });
         });
       }
-      
-      function post(){
-      	$.post("https://parkingapp.lucasmurphey.com/user",
-		{
-    		username: "lucasmurphey",
-    		fname: "Lucas"
-    		lname: "Murphey"
-		},
-		function(data, status){
-    		alert("Data: " + data + "\nStatus: " + status);
-		});
-      }
 
       function submitData() {
         var availability = escape(document.getElementById('availability').value);
@@ -85,9 +73,20 @@
         var lat = latlng.lat()
         var lng = latlng.lng()
 
-        
-		post();
-
+		    var request = new XMLHttpRequest();
+        var payload = {username:"lucasmurphey", fname: "lucas", lname: "murphey"};
+        request.open('POST', '/user', true);
+        request.setRequestHeader('Content-Type', 'application/json'); 
+        request.addEventListener('load',function(){
+            if(request.status >= 200 && request.status < 400){
+                var response = JSON.parse(request.responseText);
+                console.log(response);
+            }
+            else {
+                console.log("Error in network request: " + request.statusText);
+            }
+        }); 
+        request.send(JSON.stringify(payload));
 
         infowindow.close();
         messagewindow.open(map, marker);
