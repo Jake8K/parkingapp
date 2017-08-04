@@ -28,6 +28,7 @@
 	      	</table>
 		</div>
 		<div id="message">Thanks!</div>
+    <div id="errormessage">Oops! Something went wrong.</div>
 	</div>
     <script>
       var lattitude = 37.774929;
@@ -36,6 +37,7 @@
       var marker;
       var infowindow;
       var messagewindow;
+      var errorwindow;
 
       function initMap() {
         var coordinates = {};
@@ -53,6 +55,10 @@
 
         messagewindow = new google.maps.InfoWindow({
           content: document.getElementById('message')
+        });
+
+        errorwindow = new google.maps.InfoWindow({
+          content: document.getElementById('errormessage')
         });
 
         google.maps.event.addListener(map, 'click', function(event) {
@@ -81,15 +87,16 @@
             if(request.status >= 200 && request.status < 400){
                 var response = JSON.parse(request.responseText);
                 console.log(response);
+                infowindow.close();
+                messagewindow.open(map, marker);
             }
             else {
                 console.log("Error in network request: " + request.statusText);
+                infowindow.close();
+                errorwindow.open(map, marker);
             }
         }); 
         request.send(JSON.stringify(payload));
-
-        infowindow.close();
-        messagewindow.open(map, marker);
       }
     </script>
     <script async defer
