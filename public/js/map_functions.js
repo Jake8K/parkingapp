@@ -85,8 +85,9 @@ function initMap() {
             availability_window.open(map, this); 
 
             google.maps.event.addListener(availability_window,'closeclick',function(){
-              var div = document.createElement("availability_window");
+              var div = document.createElement("div");
               document.getElementById("hide").appendChild(div);
+              div.id = "availability_window";
             });
           }); 
         }
