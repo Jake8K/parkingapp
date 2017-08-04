@@ -47,19 +47,13 @@ function initMap() {
       if(request.status >= 200 && request.status < 400){
           var response = JSON.parse(request.responseText);
 
-          console.log(response);
-
-          /*
           for (var i = 0; i < response.length; i++) {
-            var coords = response[i].geometry.coordinates;
-            var latLng = new google.maps.LatLng(coords[1],coords[0]);
+            var latLng = new google.maps.LatLng(response[i].location_lat,response[i].location_lon);
             var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
+              position: latLng,
+              map: map
             });
           }
-          */
-          
       }
       else {
           console.log("Error in network request: " + request.statusText);
